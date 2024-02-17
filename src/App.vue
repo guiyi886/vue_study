@@ -2,10 +2,12 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld @deliver="getData" :msg="message"/>   <!--传父组件message的值给子组件msg-->
   <!--  如果直接赋值的话不需要冒号，即 <HelloWorld msg="Welcome to Your Vue.js App"/>   -->
+  <SwiperTest></SwiperTest>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import SwiperTest from "@/components/SwiperTest.vue";
 
 export default {
   name: 'App',
@@ -16,6 +18,7 @@ export default {
     }
   },
   components: {
+    SwiperTest,
     HelloWorld
   },
   methods: {
