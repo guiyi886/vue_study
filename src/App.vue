@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld :msg="message"/>   <!--传父组件message的值给子组件msg-->
+  <HelloWorld @deliver="getData" :msg="message"/>   <!--传父组件message的值给子组件msg-->
   <!--  如果直接赋值的话不需要冒号，即 <HelloWorld msg="Welcome to Your Vue.js App"/>   -->
 </template>
 
@@ -12,10 +12,17 @@ export default {
   data() {
     return {
       message: "Welcome to Your Vue.js App",
+      data: "666",
     }
   },
   components: {
     HelloWorld
+  },
+  methods: {
+    getData(data) {
+      this.data = data;
+      console.log('接收到数据：', this.data);
+    }
   }
 }
 </script>

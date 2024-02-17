@@ -35,6 +35,8 @@
 
     <!--prop从父组件接收数据-->
     <p>从父组件接收数据：{{ msg }}</p>
+
+    <button @click="deliver">子组件传递数据到父组件</button>
   </div>
 </template>
 
@@ -49,7 +51,7 @@ export default {
       message: 'Hello Vue!',
       rawHtml: '<a href="https://www.baidu.com">百度</a>',
       rawId: 'id10088',
-      flag: true, //true、false
+      flag: true, //true或false
       arr: [
         {id: 1001, name: 'Alice1'},
         {id: 1002, name: 'Alice2'},
@@ -62,9 +64,12 @@ export default {
   methods: {
     greet(message) {
       console.log(message);
-      console.log(this.message);  //this是外层的,b不是函数的
+      console.log(this.message);  //this是外层的,不是函数的
       console.log(event);
     },
+    deliver() {
+      this.$emit('deliver', this.message);
+    }
   }
 }
 </script>
