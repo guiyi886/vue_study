@@ -2,8 +2,39 @@
   <div class="hello">
     <h1>{{ message }}</h1>
     <p>vue in study</p>
+
     <div>{{ rawHtml }}</div>
-    <div v-html="rawHtml" v-bind:id="rawId"></div>
+    <!--  v-bind:可以简写成:  -->
+    <div v-html="rawHtml" :id="rawId"></div>
+
+    <!--双括号中可以放单个js表达式-->
+    {{ flag ? 'yes' : 'no' }}
+
+    <!--v-if和v-show的区别-->
+    <!--返回 `true` 值的时候渲染-->
+    <p v-if="flag">渲染成功</p>
+    <p v-else>渲染失败</p>
+
+    <!--区别：即使flag为假也会渲染，只不过会隐藏-->
+    <p v-show="flag">渲染by v-show</p>
+
+    <!--v-for生成列表-->
+    <ul>
+      <li v-for="item in arr" :key="item.id">{{ item.name }}</li>
+    </ul>
+
+    <!--v-on绑定事件-->
+    <button @click="greet('hi!')">Greet</button>
+
+    <!--v-model双向绑定-->
+    <br><br>
+    <label>请输入用户名：</label>
+    <!--.lazy是输入完成后才同步，而.trim是去除首尾的空格-->
+    <input v-model.lazy.trim="username" :placeholder="'username'">
+    <p>你的用户名是：{{ username }}</p>
+
+    <!--prop从父组件接收数据-->
+    <p>从父组件接收数据：{{ msg }}</p>
   </div>
 </template>
 
@@ -17,8 +48,23 @@ export default {
     return {
       message: 'Hello Vue!',
       rawHtml: '<a href="https://www.baidu.com">百度</a>',
-      rawId: 10086
+      rawId: 'id10088',
+      flag: true, //true、false
+      arr: [
+        {id: 1001, name: 'Alice1'},
+        {id: 1002, name: 'Alice2'},
+        {id: 1003, name: 'Alice3'},
+        {id: 1004, name: 'Alice4'},
+      ],
+      username: '',
     };
+  },
+  methods: {
+    greet(message) {
+      console.log(message);
+      console.log(this.message);  //this是外层的,b不是函数的
+      console.log(event);
+    },
   }
 }
 </script>
@@ -29,17 +75,12 @@ h3 {
   margin: 40px 0 0;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 a {
   color: #42b983;
 }
+
+#id10088 {
+  font-size: 50px;
+}
+
 </style>

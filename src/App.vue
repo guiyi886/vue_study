@@ -1,6 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HelloWorld :msg="message"/>   <!--传父组件message的值给子组件msg-->
+  <!--  如果直接赋值的话不需要冒号，即 <HelloWorld msg="Welcome to Your Vue.js App"/>   -->
 </template>
 
 <script>
@@ -8,6 +9,11 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      message: "Welcome to Your Vue.js App",
+    }
+  },
   components: {
     HelloWorld
   }
