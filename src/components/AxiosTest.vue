@@ -11,6 +11,8 @@
 import axios from 'axios';  // 导入 Axios 模块
 import qs from 'qs'
 
+import api from "../api/index"
+
 export default {
   name: 'AxiosTest',
   data() {
@@ -37,7 +39,12 @@ export default {
     }))
         .then(res => {
           this.data2 = res.data;
-        })
+        });
+
+    api.getChengpin().then(res => {
+      console.log(res.data);
+    });
+    
   },
 }
 
