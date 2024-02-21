@@ -9,14 +9,17 @@
   <nav class="nav-links">
     <router-link to="/RouterTestOne">RouterTestOne</router-link>
     <router-link to="/RouterTestTwo">RouterTestTwo</router-link>
-    <router-view></router-view>
+    <router-view></router-view>   <!--不能省略router-view，否则无反应-->
   </nav>
+
+  <VuexTest/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import SwiperTest from "@/components/SwiperTest.vue";
 import AxiosTest from "@/components/AxiosTest.vue";
+import VuexTest from "@/components/VuexTest.vue";
 
 export default {
   name: 'App',
@@ -27,6 +30,7 @@ export default {
     }
   },
   components: {
+    VuexTest,
     AxiosTest,
     SwiperTest,
     HelloWorld
@@ -50,7 +54,7 @@ export default {
   margin-top: 60px;
 }
 
-.nav-links a {
+.nav-links a { //注意不是.nav-links router-link
   margin: 20px;
   color: purple;
 }
