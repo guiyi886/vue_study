@@ -2,8 +2,15 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld @deliver="getData" :msg="message"/>   <!--传父组件message的值给子组件msg-->
   <!--  如果直接赋值的话不需要冒号，即 <HelloWorld msg="Welcome to Your Vue.js App"/>   -->
+
   <SwiperTest/>
   <AxiosTest/>
+
+  <nav class="nav-links">
+    <router-link to="/RouterTestOne">RouterTestOne</router-link>
+    <router-link to="/RouterTestTwo">RouterTestTwo</router-link>
+    <router-view></router-view>
+  </nav>
 </template>
 
 <script>
@@ -41,5 +48,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.nav-links a {
+  margin: 20px;
+  color: purple;
 }
 </style>
